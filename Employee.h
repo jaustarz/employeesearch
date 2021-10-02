@@ -7,5 +7,5 @@ typedef struct
    char *name;
    char *phone;
    double salary;
-}; Employee, *PtrToEmployee;
-typedef const Employee *PtrtoConstEmployee;
+} Employee, *PtrToEmployee;
+typedef const Employee *PtrToConstEmployee;
