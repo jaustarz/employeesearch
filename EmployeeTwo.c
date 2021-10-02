@@ -1,9 +1,9 @@
 #include <string.h>
 #include "Employee.h"
 
-static PtrToEmployee searchEmployeeTable(PtrtoConstEmployee ptr, int tableSize, const void *targetPtr, int (*functionPtr)(const void *, PtrtoConstEmployee))
+static PtrToEmployee searchEmployeeTable(PtrToConstEmployee ptr, int tableSize, const void *targetPtr, int (*functionPtr)(const void *, PtrToConstEmployee))
 {
-    PtrtoConstEmployee endPtr = ptr + tableSize;
+    PtrToConstEmployee endPtr = ptr + tableSize;
     for(; ptr < endPtr; ptr++)
     {
         if((*functionPtr)(targetPtr, ptr) == 0)
@@ -14,36 +14,36 @@ static PtrToEmployee searchEmployeeTable(PtrtoConstEmployee ptr, int tableSize, 
     return NULL;
 }
 
-static int compareEmployeeNumber(const void *targetPtr, PtrtoConstEmployee tableValuePtr)
+static int compareEmployeeNumber(const void *targetPtr, PtrToConstEmployee tableValuePtr)
 {
     return * (long *) targetPtr != tableValuePtr->number;
 }
-static int compareEmployeeName(const void *targetPtr, PtrtoConstEmployee tableValuePtr)
+static int compareEmployeeName(const void *targetPtr, PtrToConstEmployee tableValuePtr)
 {
     return strcmp((char *) targetPtr, tableValuePtr->name);
 }
-static int compareEmployeePhoneNumber(const void *targetPtr, PtrtoConstEmployee tableValuePtr)
+static int compareEmployeePhoneNumber(const void *targetPtr, PtrToConstEmployee tableValuePtr)
 {
     return strcmp((char *) targetPtr, tableValuePtr->phone);
 }
-static int compareEmployeeSalary(const void *targetPtr, PtrtoConstEmployee tableValuePtr)
+static int compareEmployeeSalary(const void *targetPtr, PtrToConstEmployee tableValuePtr)
 {
     return * (double *) targetPtr != tableValuePtr->number;
 }
 
-PtrToEmployee searchEmployeeByNumber(PtrtoConstEmployee ptr, int size, long number)
+PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int size, long number)
 {
     return searchEmployeeTable(ptr, size, &number, compareEmployeeNumber);
 }
-PtrToEmployee searchEmployeeByName(PtrtoConstEmployee ptr, int size, char* name)
+PtrToEmployee searchEmployeeByName(PtrToConstEmployee ptr, int size, char* name)
 {
     return searchEmployeeTable(ptr, size, name, compareEmployeeName);
 }
-PtrToEmployee searchEmployeeByPhoneNumber(PtrtoConstEmployee ptr, int size, char* phone)
+PtrToEmployee searchEmployeeByPhoneNumber(PtrToConstEmployee ptr, int size, char* phone)
 {
-    return searchEmployee(ptr, size, phone, compareEmployeePhoneNumber);
+    return searchEmployeeTable(ptr, size, phone, compareEmployeePhoneNumber);
 }
-PtrToEmployee searchEmployeeBySalary(PtrtoConstEmployee ptr, int size, double salary)
+PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int size, double salary)
 {
     return searchEmployeeTable(ptr, size, &salary, compareEmployeeSalary);
 }
