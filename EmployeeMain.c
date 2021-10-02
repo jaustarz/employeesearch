@@ -4,13 +4,13 @@
 
 int main()
 {
-    PtrToEmployee searchEmployeeByNumber(const Employee table[], int tableSize, long numberToFind);  
+    PtrToEmployee searchEmployeeByNumber(const Employee table[], int sizeTable, long numberToFind);  
     PtrToEmployee searchEmployeeByName(const Employee table[], int sizeTable, char * nameToFind);
     PtrToEmployee searchEmployeeByPhoneNumber(const Employee table[], int sizeTable, char * phoneNumberToFind);
-    PtrToEmployee searchEmployeeBySalary(const Employee table[], int tableSize, double salaryToFind);
+    PtrToEmployee searchEmployeeBySalary(const Employee table[], int sizeTable, double salaryToFind);
 
     extern Employee EmployeeTable[];
-    extern const int EmployeeTableEntries[];
+    extern const int EmployeeTableEntries;
 
     PtrToEmployee matchPtr;
     matchPtr = searchEmployeeByNumber(EmployeeTable, EmployeeTableEntries, 1045);
@@ -23,6 +23,7 @@ int main()
     {
         printf("Employee ID is NOT found in the record\n");
     }
+
 
     matchPtr = searchEmployeeByName(EmployeeTable, EmployeeTableEntries, "Tony Bobcat");
     if(matchPtr != NULL)
@@ -54,5 +55,7 @@ int main()
     {
         printf("Employee Salary is NOT in record %d\n", matchPtr - EmployeeTable);
     }
+    
     return EXIT_SUCCESS;
 }
+
