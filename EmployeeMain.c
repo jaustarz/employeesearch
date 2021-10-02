@@ -10,7 +10,7 @@ int main(void)
     PtrToEmployee searchEmployeeBySalary(const Employee table[], int sizeTable, double salaryToFind);
 
     extern Employee EmployeeTable[];
-    extern const int EmployeeTableEntries[];
+    extern const int EmployeeTableEntries;
 
     PtrToEmployee matchPtr;
     matchPtr = searchEmployeeByNumber(EmployeeTable, EmployeeTable, 1045);
